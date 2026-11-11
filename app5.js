@@ -1,6 +1,12 @@
 const express = require("express");
 const app = express();
 
+let station = [
+  { id: 1, code: "JE01", name: "東京駅" },
+  { id: 2, code: "JE02", name: "八丁堀駅" },
+  { id: 3, code: "JE03", name: "越中島駅" }
+];
+
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 
@@ -68,6 +74,16 @@ app.get("/janken", (req, res) => {
     total: total
   }
   res.render( 'janken', display );
+});
+
+app.get("/keiyo_add", (req, res) => {
+  let id = req.query.id;
+  let code = req.query.code;
+  let name = req.query.name;
+
+  let newdata = { id: id, code: code, name: name };
+  station.push(newdata);
+  res.render('db2', { data: station });
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
