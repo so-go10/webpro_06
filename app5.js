@@ -53,6 +53,10 @@ app.get("/janken", (req, res) => {
   if( num==1 ) cpu = 'グー';
   else if( num==2 ) cpu = 'チョキ';
   else cpu = 'パー';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 921545f516afdb05db83a55cab70e73a120f2fab
   if (hand === cpu) {
     judgement = 'あいこ';
   } else if (
@@ -65,6 +69,10 @@ app.get("/janken", (req, res) => {
   } else {
     judgement = '負け';
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 921545f516afdb05db83a55cab70e73a120f2fab
   total += 1;
   const display = {
     your: hand,
