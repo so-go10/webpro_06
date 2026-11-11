@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 
-let station = [
-  { id: 1, code: "JE01", name: "東京駅" },
-  { id: 2, code: "JE02", name: "八丁堀駅" },
-  { id: 3, code: "JE03", name: "越中島駅" }
+let martialArts = [
+  { id: 1, name: "ボクシング", category: "打撃", feature: "パンチとフットワークの駆け引き" },
+  { id: 2, name: "キックボクシング", category: "打撃", feature: "パンチとキックを組み合わせる" },
+  { id: 3, name: "総合格闘技（MMA）", category: "総合", feature: "打撃・組み技・寝技を使う" },
+  { id: 4, name: "柔道", category: "組み技", feature: "投げ技や寝技で勝負する" }
 ];
 
 app.set('view engine', 'ejs');
@@ -53,10 +54,7 @@ app.get("/janken", (req, res) => {
   if( num==1 ) cpu = 'グー';
   else if( num==2 ) cpu = 'チョキ';
   else cpu = 'パー';
-<<<<<<< HEAD
-=======
 
->>>>>>> 921545f516afdb05db83a55cab70e73a120f2fab
   if (hand === cpu) {
     judgement = 'あいこ';
   } else if (
@@ -69,10 +67,7 @@ app.get("/janken", (req, res) => {
   } else {
     judgement = '負け';
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> 921545f516afdb05db83a55cab70e73a120f2fab
   total += 1;
   const display = {
     your: hand,
@@ -84,14 +79,8 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
-app.get("/keiyo_add", (req, res) => {
-  let id = req.query.id;
-  let code = req.query.code;
-  let name = req.query.name;
-
-  let newdata = { id: id, code: code, name: name };
-  station.push(newdata);
-  res.render('db2', { data: station });
+app.get("/fight", (req, res) => {
+  res.render("db2", { data: martialArts });
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
